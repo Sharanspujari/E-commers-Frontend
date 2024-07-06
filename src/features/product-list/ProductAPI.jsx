@@ -1,5 +1,6 @@
 import { wait } from "@testing-library/user-event/dist/utils";
 
+// to fetch all the products
 export const fetchAllProducts = async () => {
   try {
     const response = await fetch("http://localhost:8080/products");
@@ -14,6 +15,18 @@ export const fetchAllProducts = async () => {
   //   const data = await response.json();
   //   resolve({data});
   // });
+};
+
+// to fetch products by id
+
+export const fetchSingleProductById = async (id) => {
+  try {
+    const response = await fetch("http://localhost:8080/products/" + id);
+    const data = await response.json();
+    return { data };
+  } catch (error) {
+    console.log("error: ", error);
+  }
 };
 
 export const fetchProductsByFilter = async (filter, sort, pagination) => {
